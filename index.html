@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>我是神里凌华的狗 - 宴宁</title>
-    <meta name="robots" content="noindex">
     <style>
         * {
             box-sizing: border-box;
@@ -39,6 +38,20 @@
         .navbar h1 {
             font-size: 2rem;
             margin: 0;
+        }
+        .navbar .language-switch {
+            font-size: 0.875rem;
+            color: #007bff;
+            display: flex;
+            gap: 10px;
+        }
+        .navbar .language-switch a {
+            text-decoration: none;
+            color: #007bff;
+            cursor: pointer;
+        }
+        .navbar .language-switch a:hover {
+            text-decoration: underline;
         }
         .container {
             width: 100%;
@@ -93,8 +106,11 @@
             font-size: 1rem;
             color: #888888;
         }
-        .lang-en {
+        .lang-zh, .lang-en {
             display: none;
+        }
+        .lang-zh.active, .lang-en.active {
+            display: block;
         }
     </style>
 </head>
@@ -102,8 +118,8 @@
     <header>
         <nav class="navbar">
             <div class="navbar-inner">
-                <h1 class="lang-zh">神里凌华的狗</h1>
-                <h1 class="lang-en">Ayaka's Dog</h1>
+                <h1 class="lang-zh active">神里凌华的狗</h1>
+                <h1 class="lang-en">Kamishiro Linghua's Dog</h1>
                 <div class="language-switch">
                     <a onclick="switchLanguage('zh')">中文</a> | <a onclick="switchLanguage('en')">English</a>
                 </div>
@@ -113,10 +129,10 @@
     <main>
         <section class="hero bg-gradient-primary text-center py-18">
             <div class="container">
-                <h2 class="display-1 mb-4 lang-zh">我是神里凌华的狗 - 宴宁（包包）</h2>
-                <h2 class="display-1 mb-4 lang-en">I am Ayaka's Dog - Yanning (Baobao)</h2>
+                <h2 class="display-1 mb-4 lang-zh active">我是神里凌华的狗 - 宴宁（包包）</h2>
+                <h2 class="display-1 mb-4 lang-en">I am Kamishiro Linghua's Dog - Yanning (Baobao)</h2>
                 <figure>
-                    <img src="img/1.jpg" alt="神里凌华的狗" class="img-fluid lang-zh"/>
+                    <img src="img/1.jpg" alt="神里凌华的狗" class="img-fluid lang-zh active"/>
                     <img src="img/1.jpg" alt="Kamishiro Linghua's Dog" class="img-fluid lang-en"/>
                 </figure>
             </div>
@@ -124,12 +140,12 @@
 
         <section class="info bg-gradient-primary text-center py-14">
             <div class="container">
-                <h2 class="display-1 mb-4 lang-zh">欢迎加入交流组</h2>
+                <h2 class="display-1 mb-4 lang-zh active">欢迎加入交流组</h2>
                 <h2 class="display-1 mb-4 lang-en">Welcome to Join the Exchange Group</h2>
-                <p class="lead fs-24 lh-sm mb-7 lang-zh">如果在使用过程中遇到问题，可以在群组中寻求帮助。</p>
+                <p class="lead fs-24 lh-sm mb-7 lang-zh active">如果在使用过程中遇到问题，可以在群组中寻求帮助。</p>
                 <p class="lead fs-24 lh-sm mb-7 lang-en">If you encounter any problems during use, you can seek help in the group.</p>
                 <figure>
-                    <img src="img/2.jpg" alt="宴宁" class="img-fluid lang-zh"/>
+                    <img src="img/2.jpg" alt="宴宁" class="img-fluid lang-zh active"/>
                     <img src="img/2.jpg" alt="Yanning" class="img-fluid lang-en"/>
                 </figure>
             </div>
@@ -137,7 +153,7 @@
 
         <section class="footer">
             <div class="container">
-                <p class="description lang-zh">© 2024 shenlilinghua.com. 保留所有权利 支持,报修邮箱:admin@shenlilinghua.com</p>
+                <p class="description lang-zh active">© 2024 shenlilinghua.com. 保留所有权利 支持,报修邮箱:admin@shenlilinghua.com</p>
                 <p class="description lang-en">© 2024 shenlilinghua.com. All rights reserved HelpEmaill:admin@shenlilinghua.com</p>
             </div>
         </section>
@@ -148,11 +164,11 @@
             const enElements = document.querySelectorAll('.lang-en');
 
             if (lang === 'zh') {
-                zhElements.forEach(el => el.style.display = 'block');
-                enElements.forEach(el => el.style.display = 'none');
+                zhElements.forEach(el => el.classList.add('active'));
+                enElements.forEach(el => el.classList.remove('active'));
             } else {
-                zhElements.forEach(el => el.style.display = 'none');
-                enElements.forEach(el => el.style.display = 'block');
+                zhElements.forEach(el => el.classList.remove('active'));
+                enElements.forEach(el => el.classList.add('active'));
             }
         }
     </script>
